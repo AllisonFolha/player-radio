@@ -1,5 +1,4 @@
 declare module 'clappr' {
-    const Clappr: any;
+    const Clappr: unknown;
     export default Clappr;
   }
-  

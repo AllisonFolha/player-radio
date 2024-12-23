@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import { createFFmpeg} from "@ffmpeg/ffmpeg";
 
 const FFmpegPlayer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);

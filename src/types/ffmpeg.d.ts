@@ -1,5 +1,5 @@
 declare module "@ffmpeg/ffmpeg" {
-    export const createFFmpeg: any;
-    export const fetchFile: any;
+    export const createFFmpeg: unknown;
+    export const fetchFile: unknown;
   }
   
