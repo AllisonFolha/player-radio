@@ -1,27 +1,48 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "target": "ES2017", // Define o alvo da transpilação
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], // Inclui bibliotecas relevantes
+    "module": "esnext", // Define o formato do módulo
+    "moduleResolution": "node", // Resolver módulos no estilo Node.js
+    "allowJs": true, // Permite usar arquivos JavaScript no projeto
+    "skipLibCheck": true, // Ignora verificações de tipos em bibliotecas de terceiros
+    "strict": true, // Ativa verificações de tipo estritas
+    "noEmit": true, // Não gera arquivos de saída
+    "esModuleInterop": true, // Permite interoperabilidade com módulos CommonJS
+    "resolveJsonModule": true, // Permite importar arquivos JSON
+    "allowSyntheticDefaultImports": true, // Permite importações padrão sintéticas
+    "isolatedModules": true, // Garante compatibilidade com o Next.js
+    "jsx": "preserve", // Usar React JSX moderno
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ], // Caminhos para tipos personalizados
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ] // Atalhos para pastas no projeto
+    },
+    "incremental": true, // Habilita build incremental para melhor desempenho
+    "noImplicitAny": false // Permite o uso implícito de `any`
+    ,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/types/**/*.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/types/**/*.d.ts" // Inclui tipos personalizados
+  ],
+  "exclude": [
+    "node_modules" // Exclui dependências de terceiros
+  ]
 }

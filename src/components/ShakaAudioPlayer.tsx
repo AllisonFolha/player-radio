@@ -1,12 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import shaka from "shaka-player";
+import shaka from "shaka-player/dist/shaka-player.compiled.js";
 
 const ShakaAudioPlayer: React.FC<{ src: string }> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      // Garante que o código só roda no cliente
+      return;
+    }
+
     const audioElement = audioRef.current;
 
     if (!audioElement) return;
