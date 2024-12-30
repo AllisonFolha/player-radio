@@ -4,10 +4,11 @@ import React, { useEffect, useRef } from "react";
 import shaka from "shaka-player/dist/shaka-player.compiled.js";
 
 const ShakaAudioPlayer: React.FC<{ src: string }> = ({ src }) => {
-  const audioRef = useRef<HTMLVideoElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") {
+      // Garantindo que o código só execute no lado do cliente
       return;
     }
 
