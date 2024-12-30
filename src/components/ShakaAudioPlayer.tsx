@@ -4,11 +4,10 @@ import React, { useEffect, useRef } from "react";
 import shaka from "shaka-player/dist/shaka-player.compiled.js";
 
 const ShakaAudioPlayer: React.FC<{ src: string }> = ({ src }) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") {
-      // Garante que o código só roda no cliente
       return;
     }
 
@@ -25,9 +24,17 @@ const ShakaAudioPlayer: React.FC<{ src: string }> = ({ src }) => {
     });
 
     // Carregar o arquivo de áudio
-    player.load(src).catch((error) => {
-      console.error("Erro ao carregar o áudio:", error);
-    });
+    player
+      .load(src)
+      .then(() => {
+        // Reproduzir automaticamente após o carregamento
+        audioElement.play().catch((error) => {
+          console.warn("Autoplay foi bloqueado pelo navegador:", error);
+        });
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar o áudio:", error);
+      });
 
     return () => {
       // Cleanup: destruindo o player quando o componente desmontar
